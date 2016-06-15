@@ -1,0 +1,25 @@
+{
+    "name": "estoque_loja",
+    "version": "1.0.0",
+    "description": "controle de estoque para uma loja",
+    "main": "app.js",
+    "scripts": {
+        "test": "MEAN"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hc3/estoque_loja.git"
+    },
+    "keywords": [
+        "MEAN",
+        "javascript",
+        "webschool",
+        "hc3"
+    ],
+    "author": "hc3",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/hc3/estoque_loja/issues"
+    },
+    "homepage": "https://github.com/hc3/estoque_loja#readme"
+}

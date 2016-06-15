@@ -1,0 +1,23 @@
+{
+  "name": "estoque_loja",
+  "description": "controle de estoque para uma loja",
+  "main": "app.js",
+  "authors": [
+    "hc3"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "MEAN",
+    "javascript",
+    "webschool",
+    "hc3"
+  ],
+  "homepage": "https://github.com/hc3/estoque_loja",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
