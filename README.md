@@ -19,6 +19,9 @@ loja1 já que foi lá que foi dado entrada na nota fiscal.
  Emitente - esses vão ser as lojas que cada loja vai ter um estoque fiscal e um estoque físico.
  MovEntrada - essa é a entidade que vai controlar o que foi dado entrada no estoque fiscal de qual emitente.
  MovSaida - essa é a entidade que vai descontar as saidas desses produto iformando o local onde foi dado entrada e o local que fez a venda.
+
+ na primeira etapa de modelagem resolvi deixar apenas uma entidade de movimentação e nela existir um atributo que diz se é de entrada ou é de saida.
+
  EstoqueFiscal -
 
  -Produtos
@@ -99,9 +102,9 @@ EstoqueFiscal : {
 }
 ````
 
--Movimento de entrada
+-movimentacao
 ````
-movEntrada : {
+movimentacao : {
   numeroNf : {
     type:Number
   },
@@ -118,30 +121,10 @@ movEntrada : {
   emitente : {
     type:Schema.Type.ObjectId,
     ref:'emitente'
-  }
-}
-````
-
--Movimento de saida
-````
-movSaida : {
-  Produto : {
-    type:Schema.Type.ObjectId,
-    ref:'produto'
   },
-  localSaida : {
-    type:Schema.Type.ObjectId,
-    ref:'emitente'
-  },
-  origemSaida : {
-    type:Schema.Type.ObjectId,
-    ref:'emitente'
-  },
-  dataMov: {
-    type:Date
-  },
-  Quantidade: {
-    type:Number
+  tipoMov : {
+    type:String,
+    require:true
   }
 }
 ````

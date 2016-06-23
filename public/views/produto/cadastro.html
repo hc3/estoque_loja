@@ -1,0 +1,66 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Cadastro de Produto</div>
+  <div class="panel-body">
+    {{ProdutoController.produto}}
+    <form name="form" class="form-horizontal">
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">
+          Descrição
+        </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          data-ng-model="ProdutoController.produto.descricao">
+        </div>
+      </div>
+      <div class="hr-dashed"></div>
+
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">
+          Codigo
+        </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          data-ng-model="ProdutoController.produto.codigoInterno">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">
+          Referencia
+        </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          data-ng-model="ProdutoController.produto.referencia">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">
+          Codigo de Barras
+        </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          data-ng-model="ProdutoController.produto.codigoDeBarras">
+        </div>
+      </div>
+
+      <div class="hr-dashed">
+        <div class="form-group">
+          <div class="col-sm-8 col-sm-offset-2">
+            <button class="btn btn-default"
+            data-ng-click="ProdutoController.reset(form)">
+            <a href="#/produtoList">
+              Cancelar
+            </a>
+            </button>
+            <button class="btn btn-primary"
+              data-ng-click="ProdutoController.cadastrar(ProdutoController.produto,form)">
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

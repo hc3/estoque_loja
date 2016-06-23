@@ -1,0 +1,23 @@
+<div>
+  <button class="btn btn-primary"><a href="#/produtoCad">Novo</a></button>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>_Id</td>
+        <td>Descricao</td>
+        <td>Codigo</td>
+        <td>Referencia</td>
+        <td>Codigo de Barras</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="produto in ProdutoController.produtos">
+        <td>{{produto._id}}</td>
+        <td>{{produto.descricao}}</td>
+        <td>{{produto.codigoInterno}}</td>
+        <td>{{produto.referencia}}</td>
+        <td>{{produto.codigoDeBarras}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

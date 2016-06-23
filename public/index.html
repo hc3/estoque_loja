@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html data-ng-app="loja">
+  <head>
+    <meta charset="utf-8">
+    <title>Sistema de controle de estoque</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <!-- Font awesome -->
+  	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  	<!-- Admin Stye -->
+  	<link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="vendor/select2/dist/css/select2.css">
+
+    <link rel="stylesheet" href="vendor/nya-bootstrap-select/dist/css/nya-bs-select.css">
+
+  </head>
+  <body>
+    <!-- BANNER PRMEIRA LOGO DO SITE COM HELP , CONFIGURAÇÃO E ACCOUNT -->
+    	<div class="brand clearfix">
+    		<a href="index.html" class="logo">
+          <img src="assets/img/logo.jpg" class="img-responsive" alt="">
+        </a>
+    		<span class="menu-btn"><i class="fa fa-bars"></i></span>
+    		<ul class="ts-profile-nav">
+    			<li><a href="#">Contato</a></li>
+    			<li><a href="#">Configuração</a></li>
+    			<li class="ts-account">
+    				<a href="#"><img src="assets/img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Conta <i class="fa fa-angle-down hidden-side"></i></a>
+    				<ul>
+    					<li><a href="#">Meu Usuário</a></li>
+    					<li><a href="#">Edit Usuário</a></li>
+    					<li><a href="#">Logout</a></li>
+    				</ul>
+    			</li>
+    		</ul>
+    	</div>
+    <!-- FIM BANNER -->
+
+    <!-- TODO CONTEUDO DO SITE MENU E PARTE CENTRAL QUE SERÁ O CONTENT -->
+    	<div class="ts-main-content">
+
+    		<!-- BARRA DE NAVEGAÇÃO COM O MENU ESTQOUE / CADASTROS / MOVIMENTAÇÃO / TRANSFERENCIAS -->
+    		<nav class="ts-sidebar">
+    			<ul class="ts-sidebar-menu">
+    				<li class="ts-label">Busca</li>
+    				<li>
+    					<input type="text" class="ts-sidebar-search" placeholder="Procurando por...">
+    				</li>
+    				<li class="ts-label">Main</li>
+    				<li class="open"><a href="#/estoque"><i class="fa fa-dashboard"></i>Estoque</a></li>
+    				<li><a href="#"><i class="fa fa-edit"></i>Cadastros</a>
+    					<ul>
+    						<li><a href="#/produtoList">Produto</a></li>
+    						<li><a href="#/emitenteList">Emitente</a></li>
+    					</ul>
+    				</li>
+
+    				<li><a href="#"><i class="fa fa-desktop"></i>Movimentação</a>
+    					<ul>
+    						<li><a href="#/movEntrada">Entrada</a></li>
+    						<li><a href="#/movSaida">Saida</a></li>
+    					</ul>
+    				</li>
+
+    				<li><a href=""><i class="fa fa-table"></i>Transferências</a></li>
+
+    				<!-- Account from above -->
+    				<ul class="ts-profile-nav">
+    					<li><a href="#">Help</a></li>
+    					<li><a href="#">Settings</a></li>
+    					<li class="ts-account">
+    						<a href="#"><img src="assets/img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
+    						<ul>
+    							<li><a href="#">My Account</a></li>
+    							<li><a href="#">Edit Account</a></li>
+    							<li><a href="#">Logout</a></li>
+    						</ul>
+    					</li>
+    				</ul>
+
+    			</ul>
+    		</nav>
+    		<!-- FIM MENU NAVEGAÇÃO -->
+
+    		<div class="content-wrapper">
+    			<div class="container-fluid">
+
+    				<div class="row">
+    					<div class="col-md-12">
+
+    						<h2 class="page-title"></h2>
+
+    						<div class="row">
+                  <!-- CONTEUDO CENTRAL -->
+    							<div class="col-md-12">
+    								<ng-view></ng-view>
+    							</div>
+
+    						</div>
+
+    					</div>
+    				</div>
+
+    			</div>
+    		</div>
+    	</div>
+
+
+    <script src="vendor/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
+    <script src="vendor/angular/angular.js" charset="utf-8"></script>
+    <script src="vendor/angular-route/angular-route.js" charset="utf-8"></script>
+    <script src="/assets/javascript/main.js" charset="utf-8"></script>
+    <script src="assets/js/app.js" charset="utf-8"></script>
+    <script src="vendor/select2/dist/js/select2.full.js" charset="utf-8"></script>
+    <script src="vendor/nya-bootstrap-select/dist/js/nya-bs-select.js" charset="utf-8"></script>
+
+
+    <script src="assets/js/controllers/produtoController.js" charset="utf-8"></script>
+    <script src="assets/js/controllers/emitenteController.js" charset="utf-8"></script>
+    <script src="assets/js/controllers/movController.js" charset="utf-8"></script>
+    <script src="assets/js/controllers/estoqueController.js" charset="utf-8"></script>
+
+
+
+    <script src="assets/js/services/produtoService.js" charset="utf-8"></script>
+    <script src="assets/js/services/emitenteService.js" charset="utf-8"></script>
+    <script src="assets/js/services/movService.js" charset="utf-8"></script>
+
+
+
+  </body>
+</html>

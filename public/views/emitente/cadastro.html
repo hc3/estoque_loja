@@ -1,0 +1,123 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Cadastro de Emitente</div>
+  <div class="panel-body">
+    {{EmitenteController.emitente}}
+    <form class="form-horizontal" name="form">
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">
+          Razão Social
+        </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          data-ng-model="EmitenteController.emitente.razao">
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">
+            Fantasia
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.fantasia">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="col-xs-2 control-label">
+            Codigo Interno
+          </label>
+          <div class="col-xs-5">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.codigoInterno">
+          </div>
+          <label for="" class="col-xs-1 control-label">
+            Cnpj
+          </label>
+          <div class="col-xs-4">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.cnpj">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">
+            Rua
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.endereco.rua">
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <label for="" class="col-sm-2 control-label">
+            Bairro
+          </label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.endereco.bairro">
+          </div>
+
+          <label for="" class="col-sm-1 control-label">
+            Numero
+          </label>
+          <div class="col-sm-1">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.endereco.numero">
+          </div>
+
+          <label for="" class="col-sm-1 control-label">
+            Telefone
+          </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.endereco.telefone">
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">
+            UF
+          </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.endereco.uf">
+          </div>
+
+          <label for="" class="col-sm-1 control-label">
+            Cidade
+          </label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control"
+            data-ng-model="EmitenteController.emitente.endereco.cidade">
+          </div>
+        </div>
+
+
+        <div class="hr-dashed"></div>
+
+        <div class="hr-dashed">
+          <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2">
+              <button class="btn btn-default"
+              data-ng-click="EmitenteController.reset(form)">
+              <a href="#/emitenteList">
+                Cancelar
+              </a>
+              </button>
+              <button class="btn btn-primary"
+              data-ng-click="EmitenteController.cadastrar(EmitenteController.emitente,form)">
+                Salvar
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

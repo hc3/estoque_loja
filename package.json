@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/hc3/estoque_loja#readme",
   "dependencies": {
-    "mongoose": "^4.5.0"
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.5.0",
+    "morgan": "^1.7.0"
   }
 }
