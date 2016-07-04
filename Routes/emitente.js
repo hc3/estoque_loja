@@ -3,6 +3,7 @@
 'use strict';
 
 var Emitente = require('../Models/emitente.js');
+var callback = require('./callback-express.js');
 
 module.exports = function(app) {
 
@@ -25,13 +26,7 @@ module.exports = function(app) {
     console.log("GET - /api/BuscaEmitente");
 
     return Emitente.find(function(err,emitente){
-      if(!err) {
-        return res.send(emitente);
-      } else {
-        res.statusCode = 500;
-        console.log("Erro interno",res.statusCode,err.message);
-        return res.send({error:"erro o tentar buscar Emitente"});
-      }
+      callback.callbackFind(err,emitente,res);
     });
   };
 
@@ -98,44 +93,26 @@ module.exports = function(app) {
   };
 
 
-  var buscaEmitentePorId = function(req,res) {
+  var buscaEmitentePorId = (req,res) => {
     console.log("GET /api/buscaEmitente/:id");
 
     var id = req.params.id;
-    return Emitente.findById({_id:id},function(err,emitente){
-      if(!emitente) {
-        res.statusCode = 404;
-        return res.send({error:"Emitente não foi localizado"});
-      }
-      if(!err) {
-        return res.send({status:"OK",emitente:emitente});
-      } else {
-        res.statusCode = 500;
-        console.log("Erro interno",res.statusCode,err.message);
-        return res.send({error:"erro ao tentar buscar emitente"});
-      }
+    return Emitente.findById({_id:id},(err,emitente) => {
+      callback.callbackFindById(err,emitente,res);
     });
   };
 
-  var removeEmitente = function(req,res) {
+  var removeEmitente = (req,res) => {
     console.log("DELETE - /api/emitente/:id");
 
     var id = req.params.id;
-    return Emitente.findById({_id:id},function(err,emitente){
+    return Emitente.findById({_id:id},(err,emitente) =>{
       if(!emitente) {
         res.statusCode = 404;
         return res.send({error:"Emitente não foi localizado!"});
       }
-      return emitente.remove(function(err) {
-        if(!err) {
-          console.log("Emitente removido com sucesso!");
-          return res.send({status:"OK",emitente:emitente});
-        }
-        else {
-          res.statusCode = 500;
-          console.log("Erro ao tentar remover",res.statusCode,err.message);
-          return res.send({error:"erro no servidor"});
-        }
+      return emitente.remove((err) => {
+        callback.callbackRemove(err,res);
       });
     });
   };
@@ -145,14 +122,7 @@ module.exports = function(app) {
 
     var emitente = new Emitente(req.body);
     emitente.save(function(err) {
-      if(err) {
-        console.log("Erro ao tentar salvar"+err);
-        res.send({error:err});
-      }
-      else {
-        console.log("Emitente cadastrado com sucesso!");
-        res.send({status:"OK",emitente:emitente});
-      }
+      callback.callbackSave(err,emitente,res);
     });
   };
 

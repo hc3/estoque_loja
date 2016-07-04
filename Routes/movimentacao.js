@@ -4,6 +4,7 @@
 
 var Mov = require('../Models/movimentacao.js');
 var Emitente = require('../Models/emitente.js');
+var callback = require('./callback-express.js');
 
 module.exports = function(app) {
 
@@ -11,13 +12,7 @@ module.exports = function(app) {
     console.log('GET - /api/buscaMov');
 
     return Mov.find(function(err,mov) {
-      if(!err) {
-        return res.send(mov);
-      } else {
-        res.statusCode = 500;
-        console.log("Erro interno!",res.statusCode,err.message);
-        return res.send({error:"erro ao tentar buscar produto"});
-      }
+      callback.callbackFind(err,mov,res);
     });
   };
 
@@ -68,18 +63,7 @@ module.exports = function(app) {
 
     var id = req.params.id;
     return Mov.findById({_id:id},function(err,mov) {
-      if(!mov) {
-        res.statusCode = 404;
-        return res.send({error:"Movimentação não foi localizada!"});
-      }
-      if(!err) {
-        return res.send({status:"OK",mov:mov});
-      }
-      else {
-        res.statusCode = 500;
-        console.log("Erro interno",res.statusCode,err.message);
-        return res.send({error:"Erro ao tentar buscar o produto"});
-      }
+      callback.callbackFindById(err,produto,res);
     });
   };
 
@@ -93,15 +77,7 @@ module.exports = function(app) {
         return res.send({error:"Movimentação não foi localizada"});
       }
       return mov.remove(function(err) {
-        if(!err) {
-          console.log("Movimentação removida com sucesso!");
-          return res.send({status:"OK",mov:mov});
-        }
-        else {
-          res.statusCode = 500;
-          console.log("Erro ao tentar remover",res.statusCode);
-          return res.send({error:"Erro no servidor"});
-        }
+        callback.callbackRemove(err,res);
       });
     });
   };

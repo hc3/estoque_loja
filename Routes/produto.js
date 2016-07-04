@@ -2,79 +2,48 @@
 'use strict';
 
 var Produto = require('../Models/produto.js');
+var callback = require('./callback-express.js');
 
 module.exports = function(app) {
 
-  var buscaProduto = function(req,res) {
+  var buscaProduto = (req,res) => {
     console.log('GET- /api/buscaProduto');
 
-    return Produto.find(function(err,produto) {
-      if(!err) {
-        return res.send(produto);
-      }else {
-        res.statusCode = 500;
-        console.log("Erro interno!",res.statusCode,err.message);
-        return res.send({error:"erro ao tentar buscar Produto!"});
-      }
+    return Produto.find((err,produto) => {
+      callback.callbackFind(err,produto,res);
     });
   };
 
-  var buscaProdutoPorId = function(req,res) {
+  var buscaProdutoPorId = (req,res) => {
     console.log('GET - /api/buscaProduto/:id');
 
     var id = req.params.id;
-    return Produto.findById({_id:id},function(err,produto) {
-      if(!produto) {
-        res.statusCode = 404;
-        return res.send({error:"Produto não foi localizado"});
-      }
-      if(!err) {
-        return res.send({status:"OK",produto:produto});
-      }
-      else {
-        res.statusCode = 500;
-        console.log("Erro interno!",res.statusCode,err.message);
-        return res.send({error:"erro ao tentar buscar produto"});
-      }
+    return Produto.findById({_id:id},(err,produto) => {
+      callback.callbackFindById(err,produto,res);
     });
   };
 
-  var removeProduto = function(req,res) {
+  var removeProduto = (req,res) => {
     console.log('DELETE - /api/produto/:id');
 
     var id = req.params.id;
-    return Produto.findById({_id:id},function(err,produto){
+    return Produto.findById({_id:id},(err,produto) => {
       if(!produto) {
         res.statusCode = 404;
         return res.send({error:"Produto não foi localizado"});
       }
-      return produto.remove(function(err){
-        if(!err) {
-          console.log("Produto removido com sucesso!");
-          return res.send({status:"OK",produto:produto});
-        }
-        else {
-          res.statusCode = 500;
-          console.log("Erro ao tentar remover",res.statusCode,err.message);
-          return res.send({error:"erro no servidor"});
-        }
+      return produto.remove((err) => {
+        callback.callbackRemove(err,res);
       });
     });
   };
 
-  var adicionarProduto = function(req,res) {
+  var adicionarProduto = (req,res) => {
     console.log('PUT - /api/produto');
 
     var produto = new Produto(req.body);
-    produto.save(function(err) {
-      if(err) {
-        console.log("Erro ao tentar salvar "+err);
-        res.send({error:err});
-      }
-      else {
-        console.log("Produto cadastrado com sucesso!");
-        res.send({status:"OK",produto:produto});
-      }
+    produto.save((err,produto) => {
+      callback.callbackSave(err,produto,res);
     });
   };
 
