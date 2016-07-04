@@ -122,7 +122,7 @@ module.exports = function(app) {
 
     var emitente = new Emitente(req.body);
     emitente.save(function(err) {
-      callback.callbackSave(err,emitente,res);
+      callback.callbackSave(err,res);
     });
   };
 

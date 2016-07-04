@@ -10,8 +10,8 @@ var obj = {
     }
   },
 
-  callbackFindById: (err,produto,res) => {
-    if(!produto) {
+  callbackFindById: (err,element,res) => {
+    if(!element) {
       res.statusCode = 404;
       return res.send({error:"Produto não foi localizado"});
     }
@@ -21,14 +21,14 @@ var obj = {
     else {
       res.statusCode = 500;
       console.log("Erro interno!",res.statusCode,err.message);
-      return res.send({error:"erro ao tentar buscar produto"});
+      return res.send({error:"erro ao tentar buscar"});
     }
   },
 
   callbackRemove: (err,res) => {
     if(!err) {
       console.log("Produto removido com sucesso!");
-      return res.send({status:"OK",produto:produto});
+      return res.send({status:"OK"});
     }
     else {
       res.statusCode = 500;
@@ -37,14 +37,14 @@ var obj = {
     }
   },
 
-  callbackSave: (err,produto,res) => {
+  callbackSave: (err,res) => {
     if(err) {
       console.log("Erro ao tentar salvar "+err);
       res.send({error:err});
     }
     else {
       console.log("Produto cadastrado com sucesso!");
-      res.send({status:"OK",produto:produto});
+      res.send({status:"OK"});
     }
   }
   

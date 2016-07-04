@@ -43,7 +43,7 @@ module.exports = function(app) {
 
     var produto = new Produto(req.body);
     produto.save((err,produto) => {
-      callback.callbackSave(err,produto,res);
+      callback.callbackSave(err,res);
     });
   };
 
