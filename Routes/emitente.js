@@ -39,17 +39,7 @@ module.exports = function(app) {
             .find()
             .populate('movimentacoes')
             .exec(function(err,emitente) {
-              if(!emitente) {
-                res.statusCode = 404;
-                return res.send({error:"Emitente não foi localizado"});
-              }
-              if(!err) {
-                return res.send(emitente);
-              } else {
-                res.statusCode = 500;
-                console.log("Erro interno",res.statusCode,err.message);
-                return res.send({error:"erro ao tentar buscar emitente"});
-              }
+              callback.callbackFindById(err,emitente,res);
             });
   };
 
@@ -106,7 +96,7 @@ module.exports = function(app) {
     console.log("DELETE - /api/emitente/:id");
 
     var id = req.params.id;
-    return Emitente.findById({_id:id},(err,emitente) =>{
+    return Emitente.findById({_id:id},(err,emitente) => {
       if(!emitente) {
         res.statusCode = 404;
         return res.send({error:"Emitente não foi localizado!"});
@@ -117,11 +107,11 @@ module.exports = function(app) {
     });
   };
 
-  var adicionaEmitente = function(req,res) {
+  var adicionaEmitente = (req,res) => {
     console.log("POST - /api/emitente");
 
     var emitente = new Emitente(req.body);
-    emitente.save(function(err) {
+    emitente.save((err) => {
       callback.callbackSave(err,res);
     });
   };
